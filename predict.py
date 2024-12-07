@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import pickle
 import numpy as np
 from flask_cors import CORS
+from mental import LogisticRegressionManual
 
 app = Flask(__name__)
 
