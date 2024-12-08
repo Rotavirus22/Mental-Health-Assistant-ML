@@ -20,7 +20,7 @@ def manual_train_test_split(X, y, test_size=0.30, random_state=0):
     split_index = int(X.shape[0] * (1 - test_size))  # calculate the split index
 
     # Use array indexing instead of .iloc
-    X_train = X[indices[:split_index]]  # training data
+    X_train = X[indices[:split_index]]  # training dataa
     X_test = X[indices[split_index:]]   # testing data
     y_train = y[indices[:split_index]]  # training labels
     y_test = y[indices[split_index:]]   # testing labels
