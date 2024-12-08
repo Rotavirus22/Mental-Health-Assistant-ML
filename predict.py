@@ -63,12 +63,12 @@ def generate_questions():
         {
             "id": "benefits",
             "question": "Do you have access to mental health benefits at work?",
-            "options": ["Yes", "No","Don't Know"]
+            "options": ["Yes", "No","Don't know"]
         },
         {
             "id": "care_options",
             "question": "Do you have access to mental health care options?",
-            "options": ["Yes", "No", "Don't Know"]
+            "options": ["Yes", "No", "Don't know"]
         },
         {
             "id": "anonymity",
