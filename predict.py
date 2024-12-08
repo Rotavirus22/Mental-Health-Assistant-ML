@@ -14,11 +14,11 @@ with open('manual_model.pkl', 'rb') as file:
 
 # Mapping user responses to numerical values
 response_mapping = {
-    "Never": 1,
-    "Rarely": 2,
-    "Sometimes": 3,
-    "Often": 4,
-    "Always": 5
+    "Never": 0,
+    "Rarely": 1,
+    "Sometimes": 2,
+    "Often": 3,
+    "Always": 4
 }
 
 # Gender and Age Mapping
@@ -38,7 +38,8 @@ age_mapping = {
 # Yes/No Mapping
 yes_no_mapping = {
     "Yes": 1,
-    "No": 0
+    "No": 0,
+    "Don't know":2
 }
 
 # Define the 8 questions to serve to users
@@ -62,27 +63,27 @@ def generate_questions():
         {
             "id": "benefits",
             "question": "Do you have access to mental health benefits at work?",
-            "options": ["Yes", "No"]
+            "options": ["Yes", "No","Don't Know"]
         },
         {
             "id": "care_options",
             "question": "Do you have access to mental health care options?",
-            "options": ["Yes", "No"]
+            "options": ["Yes", "No", "Don't Know"]
         },
         {
             "id": "anonymity",
             "question": "Do you feel your mental health is protected in terms of privacy?",
-            "options": ["Yes", "No"]
+            "options": ["Yes", "No","Don't know"]
         },
         {
             "id": "leave",
             "question": "Does your employer offer leave for mental health issues?",
-            "options": ["Yes", "No"]
+            "options": ["Never", "Rarely","Sometimes","Often","Always"]
         },
         {
             "id": "work_interfere",
             "question": "Does your work interfere with your mental health?",
-            "options": ["Yes", "No"]
+            "options": ["Never", "Rarely","Sometimes","Often","Always"]
         }
     ]
 
@@ -113,8 +114,8 @@ def predict():
         user_responses[3] = yes_no_mapping[user_responses[3]]  # Benefits
         user_responses[4] = yes_no_mapping[user_responses[4]]  # Care options
         user_responses[5] = yes_no_mapping[user_responses[5]]  # Anonymity
-        user_responses[6] = yes_no_mapping[user_responses[6]]  # Leave
-        user_responses[7] = yes_no_mapping[user_responses[7]]  # Work interfere
+        user_responses[6] = response_mapping[user_responses[6]]  # Leave
+        user_responses[7] = response_mapping[user_responses[7]]  # Work interfere
 
         # Convert other responses (e.g., "Never"/"Always") to numerical values using response_mapping
         input_features = [response_mapping.get(response, response) for response in user_responses]
